@@ -20,11 +20,13 @@ export default function SignInPage() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // Simple form validation feedback: this can be replaced with backend/API logic later.
     setNotice("Your sign-in form is ready to connect to your backend.");
   }
 
   return (
     <main className="login-shell">
+      {/* FORM START: left-side brand/story section */}
       <section
         className="story-panel"
         aria-label="About Mug & Bean Cafe"
@@ -33,7 +35,7 @@ export default function SignInPage() {
         <a className="brand" href="#home" aria-label="Mug and Bean Cafe home">
           <BrandMark />
           <span className="brand-copy">
-            <strong>MUG &amp; BEAN</strong>
+            <strong>Board's &amp;  cafe</strong>
             <small>CAFE MANAGEMENT</small>
           </span>
         </a>
@@ -50,27 +52,21 @@ export default function SignInPage() {
         <span className="photo-credit">A little more craft in every cup.</span>
       </section>
 
+      {/* FORM START: right-side login form section */}
       <section
         className="auth-panel"
         aria-label="Sign in"
         style={{ backgroundImage: `linear-gradient(90deg, rgba(246, 237, 222, .08), rgba(246, 237, 222, .08)), url("${coffeeBeans.src}")` }}
       >
-        <a className="brand mobile-brand" href="#home" aria-label="Mug and Bean Cafe home">
-          <BrandMark />
-          <span className="brand-copy">
-            <strong>MUG &amp; BEAN</strong>
-            <small>CAFE MANAGEMENT</small>
-          </span>
-        </a>
-
         <div className="auth-card">
+          {/* LOGIN SECTION START */}
           <div className="card-heading">
-            <span className="welcome-mark"><BrandMark /></span>
             <p className="card-kicker">YOUR COUNTER IS WAITING</p>
             <h2>Welcome back</h2>
             <p className="card-description">Sign in to your Mug &amp; Bean workspace.</p>
           </div>
 
+          {/* LOGIN FORM START */}
           <form className="login-form" onSubmit={handleSubmit}>
             <label htmlFor="email">Email address</label>
             <div className="input-wrap">
@@ -110,6 +106,7 @@ export default function SignInPage() {
           <div className="card-bottom">
             <span>New to Mug &amp; Bean?</span> <a href="mailto:hello@mugandbean.cafe?subject=Workspace%20access">Talk to our team</a>
           </div>
+          {/* LOGIN SECTION END */}
         </div>
 
         <footer className="auth-footer">
@@ -117,6 +114,7 @@ export default function SignInPage() {
           <span className="footer-links"><a href="mailto:hello@mugandbean.cafe?subject=Privacy">Privacy</a><i /> <a href="mailto:hello@mugandbean.cafe?subject=Terms">Terms</a></span>
         </footer>
       </section>
+      {/* FORM END */}
     </main>
   );
 }

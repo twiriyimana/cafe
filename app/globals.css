@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ========== GLOBAL STYLES START ========== */
 :root {
   --cream: #f7f0e5;
   --espresso: #21130f;
@@ -36,6 +37,8 @@ a {
   color: inherit;
 }
 
+
+/* ========== LOGIN LAYOUT START ========== */
 .login-shell {
   display: grid;
   grid-template-columns: minmax(350px, 41%) 1fr;
@@ -44,6 +47,7 @@ a {
   background: var(--cream);
 }
 
+/* ========== STORY PANEL START ========== */
 .story-panel {
   position: relative;
   display: flex;
@@ -168,7 +172,7 @@ a {
   align-items: center;
   justify-content: center;
   padding: 70px 30px 90px;
-  background-color: #eee2d0;
+  background-color: #f3e8d2;
   background-position: center;
   background-size: cover;
 }
@@ -191,7 +195,7 @@ a {
   padding: 42px 43px 28px;
   border: 1px solid rgba(255, 255, 255, .75);
   border-radius: 5px;
-  background: rgba(250, 246, 238, .96);
+  background: #f3e8d2;
   box-shadow: 0 24px 80px rgba(49, 27, 17, .22), 0 3px 12px rgba(49, 27, 17, .08);
   backdrop-filter: blur(14px);
 }
@@ -201,22 +205,9 @@ a {
   margin-bottom: 28px;
 }
 
-.welcome-mark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #7b5135;
-  opacity: .75;
-}
-
-.welcome-mark .brand-mark {
-  width: 36px;
-  height: 36px;
-}
-
 .card-kicker {
   margin: 0 0 10px;
-  color: #9a7557;
+  color: #302b2d;
   font-size: 8px;
   font-weight: 700;
   letter-spacing: .2em;
@@ -474,6 +465,9 @@ a {
   background: currentColor;
 }
 
+/* ========== AUTH PANEL END ========== */
+
+/* ========== RESPONSIVE STYLES START ========== */
 @media (max-width: 900px) {
   .login-shell {
     grid-template-columns: minmax(290px, 38%) 1fr;
@@ -663,3 +657,6 @@ a {
     left: 14px;
   }
 }
+
+/* ========== RESPONSIVE STYLES END ========== */
+/* ========== LOGIN LAYOUT END ========== */
