@@ -62,7 +62,7 @@ export default function SignInPage() {
           {/* LOGIN SECTION START */}
           <div className="card-heading">
             <h2>Welcome back</h2>
-            <p className="card-description">Sign in to your Board's &amp;  cafe  workspace.</p>
+            <p className="card-description">Sign in to your Board's  cafe  workspace.</p>
           </div>
 
           {/* LOGIN FORM START */}
