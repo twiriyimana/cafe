@@ -102,9 +102,9 @@ export default function SignInPage() {
             {notice && <p className="form-notice" role="status">{notice}</p>}
           </form>
 
-          <div className="card-bottom">
+          {/* <div className="card-bottom">
             <span>New to Mug &amp; Bean?</span> <a href="mailto:hello@mugandbean.cafe?subject=Workspace%20access">Talk to our team</a>
-          </div>
+          </div> */}
           {/* LOGIN SECTION END */}
         </div>
 
