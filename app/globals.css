@@ -1824,3 +1824,295 @@ a {
 }
 
 /* ========== DASHBOARD END ========== */
+
+/* ========== RESPONSIVE OVERRIDES ========== */
+@media (min-width: 681px) and (max-width: 960px) {
+  .login-shell {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  }
+
+  .story-panel {
+    min-height: 100svh;
+    padding: clamp(24px, 4vw, 40px);
+    background-size: cover;
+  }
+
+  .brand-mark {
+    width: 68px;
+    height: 68px;
+  }
+
+  .auth-panel {
+    min-height: 100svh;
+    padding: 28px 22px 48px;
+    background-size: cover;
+  }
+
+  .auth-card {
+    padding: 30px 26px 22px;
+  }
+}
+
+@media (max-width: 680px) {
+  .login-shell {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+  }
+
+  .story-panel {
+    display: flex;
+    min-height: clamp(190px, 30svh, 260px);
+    padding: 22px clamp(20px, 6vw, 34px);
+    background-position: center 58%;
+    background-size: cover;
+  }
+
+  .brand-mark {
+    width: 56px;
+    height: 56px;
+  }
+
+  .story-copy {
+    width: min(100%, 460px);
+  }
+
+  .eyebrow {
+    margin-bottom: 9px;
+    font-size: 9px;
+    letter-spacing: .13em;
+  }
+
+  .story-copy > p {
+    max-width: 440px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .auth-panel {
+    min-height: auto;
+    flex: 1;
+    gap: 0;
+    padding: 26px 18px 20px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .auth-panel::before {
+    background: rgba(248, 240, 227, .38);
+  }
+
+  .auth-card {
+    width: min(100%, 480px);
+    padding: clamp(24px, 6vw, 34px);
+    border-radius: 12px;
+  }
+
+  .card-heading h2 {
+    font-size: clamp(30px, 8vw, 38px);
+  }
+
+  .card-heading p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .login-form > label,
+  .password-label-row label {
+    font-size: 12px;
+  }
+
+  .input-wrap {
+    height: 48px;
+  }
+
+  .input-wrap input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .password-label-row a,
+  .card-bottom a {
+    font-size: 12px;
+  }
+
+  .submit-button {
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .form-notice {
+    font-size: 12px;
+  }
+
+  .card-bottom {
+    flex-wrap: wrap;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .auth-footer {
+    position: relative;
+    inset: auto;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    transform: none;
+    color: #5d4a3c;
+    font-size: 11px;
+    text-shadow: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .story-panel {
+    min-height: 185px;
+    padding: 18px 20px;
+  }
+
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+  }
+
+  .story-copy > p {
+    font-size: 11px;
+  }
+
+  .auth-panel {
+    padding: 20px 14px 16px;
+  }
+
+  .auth-card {
+    padding: 24px 20px;
+  }
+
+  .password-label-row {
+    gap: 8px;
+  }
+
+  .password-label-row a {
+    font-size: 11px;
+  }
+
+  .auth-footer {
+    column-gap: 5px;
+    row-gap: 3px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard-layout {
+    min-height: 100svh;
+  }
+
+  .dashboard-main,
+  .dashboard-content,
+  .dashboard-card,
+  .workspace-list-card {
+    min-width: 0;
+  }
+
+  .dashboard-layout :not(h1):not(h2):not(h3):not(.metric-value):not(.dashboard-brand-mark):not(svg):not(path):not(rect):not(circle):not(line):not(polyline):not(polygon):not(stop) {
+    font-size: max(11px, 1em) !important;
+  }
+
+  .dashboard-nav-link,
+  .dashboard-logout,
+  .workspace-primary-button,
+  .workspace-delete-button {
+    min-height: 40px;
+  }
+
+  .transaction-table-wrap,
+  .workspace-user-table-wrap {
+    max-width: 100%;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboard-topbar {
+    min-width: 0;
+  }
+
+  .dashboard-breadcrumb {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .dashboard-breadcrumb strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-actions {
+    flex: 0 0 auto;
+  }
+
+  .workspace-access-heading,
+  .workspace-list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .workspace-tools-grid,
+  .workspace-admin-lists {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .workspace-primary-button {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-topbar {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .topbar-date,
+  .topbar-user {
+    display: none;
+  }
+
+  .dashboard-content {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .metrics-grid {
+    gap: 8px;
+  }
+
+  .metric-card {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}
+
+@media (max-height: 560px) and (max-width: 680px) {
+  .story-panel {
+    min-height: 150px;
+  }
+
+  .auth-panel {
+    padding-top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ========== RESPONSIVE OVERRIDES END ========== */
