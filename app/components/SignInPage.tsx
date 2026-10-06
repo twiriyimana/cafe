@@ -69,9 +69,8 @@ export default function SignInPage() {
         aria-label="About Mug & Bean Cafe"
         style={{ backgroundImage: `linear-gradient(180deg, rgba(30, 16, 11, .22) 0%, rgba(30, 16, 11, .28) 45%, rgba(30, 16, 11, .78) 100%), url("${cafePhoto.src}")` }}
       >
-        <a className="brand" href="" aria-label="Mug and Bean Cafe home">
+        <a className="brand" href="/" aria-label="Mug and Bean Cafe home">
           <BrandMark />
-          
         </a>
 
         <div className="story-copy">
@@ -117,26 +116,29 @@ export default function SignInPage() {
               </button>
             </div>
 
-            <label className="remember-option">
-              <input type="checkbox" name="remember" />
-              
-            </label>
-
             <button className="submit-button" type="submit" disabled={isSubmitting}>
-             <span aria-hidden="true">→</span> {isSubmitting ? "Signing in…" : "Sign in"} 
+              <span aria-hidden="true">→</span> {isSubmitting ? "Signing in…" : "Sign in"}
             </button>
-           
+
+            {error && <p className="form-notice" role="alert">{error}</p>}
           </form>
 
           <div className="card-bottom">
-            <span className="secure-dot" aria-hidden="true" />
+            <svg className="secure-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 1.5 13 3.4v3.8c0 3.2-2 5.8-5 7.3-3-1.5-5-4.1-5-7.3V3.4L8 1.5Z" />
+              <path d="m5.8 7.7 1.5 1.5 3-3.2" />
+            </svg>
             <p>Protected by secure workspace authentication</p>
           </div>
           {/* LOGIN SECTION END */}
         </div>
-       <footer className="auth-footer">
-          <span>© 2026 Boards.Privacy .Help Center.</span>
-        </footer> 
+        <footer className="auth-footer">
+          <span>© 2026 BOARDS</span>
+          <span aria-hidden="true">·</span>
+          <a href="#privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:support@mugandbean.cafe">Help Center</a>
+        </footer>
       </section>
       
       {/* FORM END */}

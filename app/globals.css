@@ -2,7 +2,7 @@
 
 /* ========== GLOBAL STYLES START ========== */
 :root {
-  --cream: #f7f0e5;
+  --cream: #f7f0e7;
   --espresso: #21130f;
   --muted: #88796e;
 }
@@ -48,7 +48,6 @@ a {
   display: grid;
   grid-template-columns: minmax(350px, 41%) 1fr;
   min-height: 100svh;
-  overflow: hidden;
   background: var(--cream);
 }
 
@@ -56,14 +55,14 @@ a {
 .story-panel {
   position: relative;
   display: flex;
-  min-height: 100svh;
+  min-height: clamp(400px, 72vh, 820px);
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(30px, 4.3vw, 66px);
   color: #fffaf2;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .brand {
@@ -86,8 +85,8 @@ a {
 .brand-mark {
   position: relative;
   display: grid;
-  width: 72px;
-  height: 72px;
+  width: 88px;
+  height: 88px;
   flex: 0 0 auto;
   place-items: center;
   border: 1px solid currentColor;
@@ -150,7 +149,7 @@ a {
 .auth-panel {
   position: relative;
   display: flex;
-  min-height: 100svh;
+  min-height: clamp(500px, 72vh, 820px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -159,7 +158,7 @@ a {
   background-color: #f3e8d2;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .auth-panel::before {
@@ -392,12 +391,15 @@ a {
   font-size: 9px;
 }
 
-.secure-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #7e9d6f;
-  box-shadow: 0 0 0 3px rgba(121, 149, 109, .14);
+.secure-icon {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #6f9668;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
 }
 
 .form-notice {
@@ -445,8 +447,9 @@ a {
   justify-content: center;
   transform: translateX(50%);
   color: rgba(255, 250, 244, 0.9);
-  font-size: 17px;
-  letter-spacing: .06em;
+  gap: 6px;
+  font-size: 15px;
+  letter-spacing: .02em;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
@@ -486,6 +489,7 @@ a {
     gap: 25px;
     padding: 40px 20px 75px;
     background-position: center;
+    background-size: contain;
   }
 
   .mobile-brand {
