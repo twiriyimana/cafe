@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { getDemoUsers, setDemoIdentity, verifyDemoPassword } from "../../lib/demo-workspace";
 import cafePhoto from "../images/cafe.jpeg";
 import cafeLogo from "../images/ima.png";
 import coffeeBeans from "../images/image.png";
@@ -15,13 +17,48 @@ function BrandMark() {
 }
 
 export default function SignInPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [notice, setNotice] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // Simple form validation feedback: this can be replaced with backend/API logic later.
-    setNotice("Your sign-in form is ready to connect to your backend.");
+    setError("");
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const identifier = String(formData.get("email") ?? "").trim();
+    const normalizedIdentifier = identifier.toLowerCase();
+    const password = String(formData.get("password") ?? "");
+
+    try {
+      const demoUser = getDemoUsers().find((user) => user.email?.toLowerCase() === normalizedIdentifier);
+      const accountName = normalizedIdentifier.includes("@") ? normalizedIdentifier.split("@")[0] : normalizedIdentifier;
+      const isAdmin = accountName === "admin" || accountName === "administrator";
+
+      if (demoUser) {
+        if (!demoUser.passwordSalt || !demoUser.passwordHash) {
+          throw new Error("This demo account has no password yet. Ask the admin to recreate it with an email and password.");
+        }
+        if (!(await verifyDemoPassword(demoUser, password))) {
+          throw new Error("The email or password is incorrect.");
+        }
+      } else if (!isAdmin) {
+        throw new Error("No demo account was found for this email. Ask the admin to create one first.");
+      }
+
+      setDemoIdentity({
+        username: isAdmin ? "admin" : demoUser!.username,
+        displayName: isAdmin ? "Cafe Admin" : demoUser!.displayName,
+        role: isAdmin ? "admin" : "user",
+      });
+      router.replace(isAdmin ? "/dashboard/admin" : "/dashboard/user");
+    } catch (signInError) {
+      setError(signInError instanceof Error ? signInError.message : "Sign in failed. Check the email and password.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -32,24 +69,15 @@ export default function SignInPage() {
         aria-label="About Mug & Bean Cafe"
         style={{ backgroundImage: `linear-gradient(180deg, rgba(30, 16, 11, .22) 0%, rgba(30, 16, 11, .28) 45%, rgba(30, 16, 11, .78) 100%), url("${cafePhoto.src}")` }}
       >
-        <a className="brand" href="#home" aria-label="Mug and Bean Cafe home">
+        <a className="brand" href="" aria-label="Mug and Bean Cafe home">
           <BrandMark />
-          <span className="brand-copy">
-            <strong>Board's &amp;  cafe</strong>
-            <small>CAFE MANAGEMENT</small>
-          </span>
+          
         </a>
 
         <div className="story-copy">
-          <span className="eyebrow"><span /> MADE FOR THE LOVE OF COFFEE</span>
-          <h1>Run every part of your coffee shop business with confidence.</h1>
-          <p>From the morning rush to the final stock count, your café deserves a smoother way to work.</p>
-          <div className="story-stat">
-            <span className="stat-rule" />
-            <span>GOOD COFFEE. BETTER BUSINESS.</span>
-          </div>
+          <span className="eyebrow"><span />COFFEE SHOP, THOUGHTFULLY MANAGED</span>
+          <p>From the morning rush to the final stock count, BOARDS keeps your team, sales, and inventory in one calm workspace.</p>
         </div>
-        <span className="photo-credit">A little more craft in every cup.</span>
       </section>
 
       {/* FORM START: right-side login form section */}
@@ -61,17 +89,16 @@ export default function SignInPage() {
         <div className="auth-card">
           {/* LOGIN SECTION START */}
           <div className="card-heading">
-            <p className="card-kicker">YOUR COUNTER IS WAITING</p>
             <h2>Welcome back</h2>
-            <p className="card-description">Sign in to your Mug &amp; Bean workspace.</p>
+            <p>Sign in to your BOARDS workspace.</p>
           </div>
 
           {/* LOGIN FORM START */}
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form className="login-form" noValidate onSubmit={handleSubmit}>
             <label htmlFor="email">Email address</label>
             <div className="input-wrap">
               <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="12" rx="2" /><path d="m3.5 5.5 6.5 5 6.5-5" /></svg>
-              <input id="email" name="email" type="email" placeholder="you@yourcafe.com" autoComplete="email" required />
+              <input id="email" name="email" type="text" placeholder="user@example.com" autoComplete="username" required />
             </div>
 
             <div className="password-label-row">
@@ -92,28 +119,26 @@ export default function SignInPage() {
 
             <label className="remember-option">
               <input type="checkbox" name="remember" />
-              <span className="custom-checkbox" aria-hidden="true" />
-              <span>Keep me signed in</span>
+              
             </label>
 
-            <button className="submit-button" type="submit">
-              Sign in <span aria-hidden="true">→</span>
+            <button className="submit-button" type="submit" disabled={isSubmitting}>
+             <span aria-hidden="true">→</span> {isSubmitting ? "Signing in…" : "Sign in"} 
             </button>
-            <p className="secure-note"><span className="secure-dot" /> Your workspace is private and secure</p>
-            {notice && <p className="form-notice" role="status">{notice}</p>}
+           
           </form>
 
           <div className="card-bottom">
-            <span>New to Mug &amp; Bean?</span> <a href="mailto:hello@mugandbean.cafe?subject=Workspace%20access">Talk to our team</a>
+            <span className="secure-dot" aria-hidden="true" />
+            <p>Protected by secure workspace authentication</p>
           </div>
           {/* LOGIN SECTION END */}
         </div>
-
-        <footer className="auth-footer">
-          <span>© 2026 Mug &amp; Bean Cafe</span>
-          <span className="footer-links"><a href="mailto:hello@mugandbean.cafe?subject=Privacy">Privacy</a><i /> <a href="mailto:hello@mugandbean.cafe?subject=Terms">Terms</a></span>
-        </footer>
+       <footer className="auth-footer">
+          <span>© 2026 Boards.Privacy .Help Center.</span>
+        </footer> 
       </section>
+      
       {/* FORM END */}
     </main>
   );
