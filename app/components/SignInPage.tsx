@@ -1,4 +1,4 @@
-"use client";
+"use clientqeeasejhjwfdhsajhdajshdajshjashjdhasjh";
 
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
@@ -17,7 +17,7 @@ function BrandMark() {
     </span>
   );
 }
-
+sdxzldskadxzjsadjkjsdakjkafsjdkhjfkasdkjaskjdkjsfkajk
 export default function SignInPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
