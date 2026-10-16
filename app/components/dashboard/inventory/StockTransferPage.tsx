@@ -1,0 +1,1 @@
+import SimpleInventoryPage from './SimpleInventoryPage'; import type { InventoryRole } from './InventoryLayout'; export default function StockTransferPage({role}:{role:InventoryRole}){return <SimpleInventoryPage role={role} title="Stock Transfer" fields={['name','category','quantity','unit','status']}/>}

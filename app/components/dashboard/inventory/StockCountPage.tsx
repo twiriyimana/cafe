@@ -1,0 +1,1 @@
+import SimpleInventoryPage from './SimpleInventoryPage'; import type { InventoryRole } from './InventoryLayout'; export default function StockCountPage({role}:{role:InventoryRole}){return <SimpleInventoryPage role={role} title="Stock Count" fields={['name','category','quantity','unit','status']}/>}

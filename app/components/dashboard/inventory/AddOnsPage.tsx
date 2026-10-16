@@ -1,0 +1,1 @@
+import SimpleInventoryPage from './SimpleInventoryPage'; import type { InventoryRole } from './InventoryLayout'; export default function AddOnsPage({role}:{role:InventoryRole}){return <SimpleInventoryPage role={role} title="Add-ons" fields={['name','category','quantity','unit','status']}/>}

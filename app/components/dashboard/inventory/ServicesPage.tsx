@@ -1,0 +1,1 @@
+import SimpleInventoryPage from './SimpleInventoryPage'; import type { InventoryRole } from './InventoryLayout'; export default function ServicesPage({role}:{role:InventoryRole}){return <SimpleInventoryPage role={role} title="Services" fields={['name','category','status']}/>}
