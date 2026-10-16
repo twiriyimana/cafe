@@ -1,4 +1,4 @@
-"use client";
+"use clientkdsjjdksjksaj";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,11 +9,11 @@ import beansImage from "../../images/image.png";
 import brandImage from "../../images/ima.png";
 import ProfileBadge from "./ProfileBadge";
 import styles from "./DashboardPage.module.css";
-
+jdfjhjhhhhhjhjjjjjjhhhhhduddjsdsjjjjjjjjjjjjjjjjjjjjjjsuedeuuuryuyuetdyfyduyuasydhusyuysadgygashg
 type DashboardPageProps = { role: "admin" | "user" };
 type IconName = "home" | "transactions" | "inventory" | "contacts" | "reports" | "activity" | "arrow" | "refresh";
 type Metric = { label: string; key: string; format: "money" | "number" };
-
+sdajsadhjhjashdjhfgsdhagshgsahjahdjashjhasdjhsjhdasjh
 const metrics: Metric[] = [
   { label: "Total sales", key: "total_sales", format: "money" },
   { label: "Total purchases", key: "purchase_total", format: "money" },
@@ -22,7 +22,7 @@ const metrics: Metric[] = [
   { label: "Pending orders", key: "pending_order_count", format: "number" },
   { label: "Low stock items", key: "low_stock_item_count", format: "number" },
 ];
-
+dsjhjdhasjhwjhasjdhjhsdjahdjhsdjahdjhdasj
 const navigation: { label: string; icon: IconName; href: string }[] = [
   { label: "Home", icon: "home", href: "" },
   { label: "Transactions", icon: "transactions", href: "/transactions" },
@@ -35,7 +35,7 @@ function money(value: unknown) {
   const amount = Number(value ?? 0);
   return `Rwf ${Number.isFinite(amount) ? amount.toLocaleString("en-RW", { maximumFractionDigits: 0 }) : "0"}`;
 }
-
+dashjhasdjhtashgsahdsjhghdasjhsd
 function numberValue(value: unknown) {
   const amount = Number(value ?? 0);
   return Number.isFinite(amount) ? amount.toLocaleString("en-RW") : "0";
