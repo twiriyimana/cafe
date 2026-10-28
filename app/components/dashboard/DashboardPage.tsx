@@ -1,4 +1,4 @@
-"use clientkdsjjdksjksaj";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,11 +9,9 @@ import beansImage from "../../images/image.png";
 import brandImage from "../../images/ima.png";
 import ProfileBadge from "./ProfileBadge";
 import styles from "./DashboardPage.module.css";
-jdfjhjhhhhhjhjjjjjjhhhhhduddjsdsjjjjjjjjjjjjjjjjjjjjjjsuedeuuuryuyuetdyfyduyuasydhusyuysadgygashg
 type DashboardPageProps = { role: "admin" | "user" };
 type IconName = "home" | "transactions" | "inventory" | "contacts" | "reports" | "activity" | "arrow" | "refresh";
 type Metric = { label: string; key: string; format: "money" | "number" };
-sdajsadhjhjashdjhfgsdhagshgsahjahdjashjhasdjhsjhdasjh
 const metrics: Metric[] = [
   { label: "Total sales", key: "total_sales", format: "money" },
   { label: "Total purchases", key: "purchase_total", format: "money" },
